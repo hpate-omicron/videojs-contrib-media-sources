@@ -179,11 +179,20 @@ export default class HtmlMediaSource extends videojs.EventTarget {
       this.nativeMediaSource_.addEventListener(eventName, this.trigger.bind(this));
     }, this);
 
+    function findVideoPlayer(url) {
+      let videoPlayers = document.querySelectorAll('video-player');
+      for (let i = 0; i < videoPlayers.length; i++) {
+        let elem = videoPlayers[i].shadowRoot &&
+          videoPlayers[i].shadowRoot.querySelector(`[src="${url}"]`);
+
+        if (elem) return elem;
+      }
+    }
     // capture the associated player when the MediaSource is
     // successfully attached
     this.on('sourceopen', (event) => {
       // Get the player this MediaSource is attached to
-      let video = document.querySelector('[src="' + this.url_ + '"]');
+      let video = document.querySelector('[src="' + this.url_ + '"]') || findVideoPlayer(this.url_);
 
       if (!video) {
         return;
