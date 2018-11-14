@@ -11064,7 +11064,7 @@ var VirtualSourceBuffer = (function (_videojs$EventTarget) {
 
       segment.initSegment = new Uint8Array(segment.initSegment.data, segment.initSegment.byteOffset, segment.initSegment.byteLength);
 
-      (0, _createTextTracksIfNecessary2['default'])(this, this.mediaSource_, segment);
+      // createTextTracksIfNecessary(this, this.mediaSource_, segment);
 
       // Add the segments to the pendingBuffers array
       this.pendingBuffers_.push(segment);

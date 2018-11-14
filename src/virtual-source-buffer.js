@@ -388,7 +388,7 @@ export default class VirtualSourceBuffer extends videojs.EventTarget {
       segment.initSegment.byteLength
     );
 
-    createTextTracksIfNecessary(this, this.mediaSource_, segment);
+    // createTextTracksIfNecessary(this, this.mediaSource_, segment);
 
     // Add the segments to the pendingBuffers array
     this.pendingBuffers_.push(segment);
